@@ -139,38 +139,38 @@ a {
    ========================================================================== */
 header {
     nav {
-        z-index: 1;
         &.navbar {
-            padding: 0rem 1.5rem;
+            position: absolute;
+            .navbar-brand {
+                position: relative;
+                bottom: 12px;
+            }
         }
-        &.bg-light{
-            background-color: #1D1D1D !important;
-            border-bottom: 1px solid $primary;
+        .navbar-collapse {
         }
         ul {
             &.navbar-nav {
                 a {
-                    font-size: 0.8em;
+                    font-size: 1em;
                     text-transform: uppercase;
                     font-weight: 600;
-                    color: #BD3C4E;
+                    color: $primary;
                     &:hover, &.active {
-                        color: #eee;
+                        color: $secondary;
                     }
                 }
-            }
-            &.social-media {
-                flex-direction: row;
-                display: flex;
-                margin-top: 0;
-                padding: 0;
-                margin-bottom: 0;
-                font-size: 1.3em;
             }
             li {
                 float: left;
                 list-style: none;
             }
+        }
+    }
+}
+body.trustees {
+    nav {
+        &.navbar {
+            position: relative;
         }
     }
 }
@@ -1898,9 +1898,21 @@ footer {
 /* ==========================================================================
     NAVIGATION
    ========================================================================== */
-    header nav ul.navbar-nav a {
-        font-size: 0.67rem;
-   }
+    header {
+        nav {
+            &.navbar {
+                position: relative;
+                .navbar-brand {
+                    position: relative;
+                    bottom: 12px;
+                }
+            }
+            ul.navbar-nav a {
+                font-size: 0.67rem;
+                color: $primary;
+            }
+        }
+    }
 /* ==========================================================================
     CONTACT PAGE
    ========================================================================== */
