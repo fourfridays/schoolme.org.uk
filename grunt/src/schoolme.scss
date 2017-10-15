@@ -223,9 +223,16 @@ body.trustees {
 
 
 /* Home */
-.flinthillsparanormal h3 {
-    padding: 8px;
-    background-color: $secondary;
+.schoolme {
+    h1, h3, .block-four_columns .rich-text p {
+        text-align: center;
+    }
+    .concrete {
+        p {
+            color: #f0f6fc;
+            font-size: 1.3rem;
+        }
+    }
 }
 
 
