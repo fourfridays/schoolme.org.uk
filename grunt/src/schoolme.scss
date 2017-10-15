@@ -237,7 +237,11 @@ body.trustees {
 
 
 /* Hero Images */
-.block-hero_image figure.overlay {
+.block-hero_image 
+    figure {
+        border-bottom: 1px solid $secondary;
+    }
+    figure.overlay {
     position: relative; 
     width: 100%; /* for IE 6 */
     figcaption {
