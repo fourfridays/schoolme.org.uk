@@ -83,6 +83,14 @@ a {
     }
 }
 
+.concrete {
+    background-color: rgba(55, 71, 79 ,1);
+    padding: 1.5rem !important;
+    margin: 1rem 0 !important;
+    border-top: 3px solid $secondary;
+    border-bottom: 1px solid $secondary;
+}
+
 .btn-primary {
     background-color: $primary;
     border-color: $secondary;
