@@ -43,7 +43,20 @@
             {% block content %}{% endblock %}
         </main>
 
-        {% block content %}{% endblock %}
+        <footer class="py-2 my-auto" role="contentinfo">
+            <div class="container py-2">
+                <div class="row footer-text">
+                    <div class="col-md-6">
+                        <p><span class="copyright">&copy;</span> Copyright {% now "Y" %} SchoolMe</p>
+                        <p>A <a style="color: #a43f33;" target="_blank" href="https://fourfridays.com">fourfridays [BETA]</a> website.</p>
+                    </div>
+                    <div class="col-md-6 contact-info">
+                        <p><i class="material-icons md-18">smartphone</i> London <a href="tel:+4407557104673">+(44) (0) 75 57104673</a> | Tunis <a href="tel:+21698938849">+(216) (98) 938849</a>
+                        <p><i class="material-icons md-18">email</i><a href="mailto:info@schoolme.org.uk"> info@schoolme.org.uk</a> <i class="material-icons">location_on</i>139 Leathwaite Road, London</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/schoolme.js' %}"></script>
