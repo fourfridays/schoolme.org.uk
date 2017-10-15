@@ -60,13 +60,12 @@ $font-color: rgba(33, 33, 33 ,1);
 }
 
 body {
-    font-family: 'Lato', sans-serif;
-    background-color: #1D1D1D;
-    color: $secondary;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(44, 62, 80, 1.0);
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', serif;
-    color: $primary;
+    font-family: 'Raleway', sans-serif;
+    color: $font-color;
 }
 h1 {
     text-transform: uppercase;
