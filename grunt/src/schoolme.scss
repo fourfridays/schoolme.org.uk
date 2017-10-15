@@ -239,16 +239,6 @@ body.trustees {
 }
 
 
-/* News */
-article.news-index{
-    h2 {
-        padding: 8px;
-        background-color: $secondary;
-        a:hover {
-            color: #000;
-            text-decoration: none;
-        }
-    }
 /* Starfish Story Animation */
 .block-starfish {
     height: 650px;
@@ -261,10 +251,6 @@ article.news-index{
     color: #eee;
 }
 
-
-/* Equipment */
-.card-deck .card {
-    flex: none;
   
 .sky {
   position: relative;
@@ -829,11 +815,6 @@ article.news-index{
   box-shadow: #CBBEB5 0 0 6px, rgba(255, 255, 255, 0.2) 0 0 6px 2px;
 }
 
-/* Heart Rate */
-.heart-rate {
-  width: 150px;
-  height: 73px;
-  position: relative;
 .moon {
   position: absolute;
   top: 0;
