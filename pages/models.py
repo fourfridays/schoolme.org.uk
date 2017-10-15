@@ -111,6 +111,14 @@ class HtmlFormatBlock(StreamBlock):
     raw_html = AlignedRAWHTMLBlock()
 
 
+class StarFishBlock(StructBlock):
+    html = RawHTMLBlock()
+
+    class Meta:
+        template = 'starfish_block.html'
+        label = 'Starfish'
+
+
 class SingleColumnBlock(StructBlock):
     column = HtmlFormatBlock()
     background_color = BackgroundColorBlock()
