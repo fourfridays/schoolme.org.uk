@@ -138,6 +138,17 @@ class TwoColumnBlock(StructBlock):
         label = 'Two Columns'
 
 
+class ThreeColumnBlock(StructBlock):
+    left_column = HtmlFormatBlock()
+    middle_column = HtmlFormatBlock()
+    right_column = HtmlFormatBlock()
+    background_color = BackgroundColorBlock()
+
+    class Meta:
+        template = 'three_column_block.html'
+        label = 'Three Columns'
+
+
 class FourColumnBlock(StructBlock):
     left_column_1 = HtmlFormatBlock()
     left_column_2 = HtmlFormatBlock()
