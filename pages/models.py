@@ -2,6 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 from django.db import models
 from django import forms
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse
+from django.template.response import TemplateResponse
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import StreamField, RichTextField
@@ -9,8 +12,9 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
 
 from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 
-from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock, BooleanBlock, ChoiceBlock
+from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock, BooleanBlock, ChoiceBlock, PageChooserBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
@@ -172,11 +176,54 @@ class FormPage(AbstractEmailForm):
     ]
 
 
+class TrusteesBlock(StructBlock):
+    prefix = ChoiceBlock(choices=[
+        ('Dr', 'Dr.'),
+        ('Mr', 'Mr.'),
+        ('Mrs', 'Mrs.'),
+        ('Ms', 'Ms.'),
+        ])
+    first_name = CharBlock()
+    last_name =  CharBlock()
+    title = CharBlock()
+    description = RichTextBlock()
+    image = ImageChooserBlock()
+
+    class Meta:
+        template = "trustees_block.html"
+
+
+class TrusteesPage(RoutablePageMixin, Page):
+    directory = StreamField([
+        ('person', TrusteesBlock())
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('directory'),
+    ]
+    
+    @route(r'^$')
+    def get_context(self, value):
+        context = super(TrusteesPage, self).get_context(value)
+        context['dir'] = [block.value for block in self.directory]
+        return render(value, 'trustees.html', context)
+
+    @route(r'^(?P<first_name>[a-z]+)/$')
+    def get_name(self, request, first_name):
+        context = super(TrusteesPage, self).get_context(request)
+        context['name'] = first_name
+        context['names'] = [block.value for block in self.directory]
+        return render(request, 'trustee.html', context)
+
+
 class Pages(Page):
     body = StreamField([
         ('single_column', SingleColumnBlock(group='COLUMNS')),
         ('two_columns', TwoColumnBlock(group='COLUMNS')),
+        ('three_columns', ThreeColumnBlock(group='COLUMNS')),
         ('four_columns', FourColumnBlock(group='COLUMNS')),
+        ('starfish', StarFishBlock()),
+        ('trustee_page', PageChooserBlock(template='trustee_widget.html')),
         ('hero_image', HeroImageBlock(icon='image')),
     ],default='')
 
