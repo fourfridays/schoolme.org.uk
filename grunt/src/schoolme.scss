@@ -204,6 +204,24 @@ body.trustees {
 }
 
 
+/*Circle*/
+.circle {
+    position: relative;
+    left: 28%;
+    top: 50%;
+    .circle-icon {
+        background: #fff;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        font-size: 30px;
+        line-height: 100px;
+        border: 1px dotted $secondary;
+        border-radius: 50%;
+    }
+}
+
+
 /* Home */
 .flinthillsparanormal h3 {
     padding: 8px;
