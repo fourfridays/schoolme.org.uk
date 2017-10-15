@@ -2,8 +2,9 @@
 @import 'font-awesome-custom';
 @import '../node_modules/lightbox2/dist/css/lightbox';
 
-$primary: rgba(189, 60, 78, 1);
-$secondary: rgba(238, 238, 238, 1);
+$primary: rgba(11, 106, 179, 1);
+$secondary: rgba(126, 179, 79, 1);
+$font-color: rgba(33, 33, 33 ,1);
 
 
 @font-face {
@@ -29,7 +30,7 @@ $secondary: rgba(238, 238, 238, 1);
     word-wrap: normal;
     white-space: nowrap;
     direction: ltr;
-    color: #BD3C4E;
+    color: $primary;
 
     /* Support for all WebKit browsers. */
     -webkit-font-smoothing: antialiased;
@@ -55,7 +56,7 @@ $secondary: rgba(238, 238, 238, 1);
 .material-icons.md-120 { font-size: 120px; }
 
 .fa {
-    color: #BD3C4E;
+    color: $secondary;
 }
 
 body {
