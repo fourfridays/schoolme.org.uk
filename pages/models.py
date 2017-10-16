@@ -27,9 +27,9 @@ from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 class AlignmentChoiceBlock(ChoiceBlock):
     choices = [
         ('normal', 'Normal'),
-        ('text-left', 'Left'),
+        ('float-left', 'Left'),
         ('text-center', 'Center'),
-        ('text-right', 'Right'),
+        ('float-right', 'Right'),
         ('text-justify', 'Justify'),
         ('text-nowrap', 'No Wrap')
     ]
@@ -43,8 +43,6 @@ class AlignedRAWHTMLBlock(StructBlock):
 class BackgroundColorBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
         ('normal', 'Normal'), 
-        ('white-smoke', 'White Smoke'),
-        ('aqua-island', 'Aqua Island'),
         ('concrete', 'Concrete')
     ))
 
