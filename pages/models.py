@@ -176,10 +176,14 @@ class FormField(AbstractFormField):
 
 
 class FormPage(AbstractEmailForm):
+    body = StreamField([
+        ('hero_image', HeroImageBlock(icon='image'))
+    ],default='')
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
+        StreamFieldPanel('body'),
         FieldPanel('intro', classname="full"),
         InlinePanel('form_fields', label="Form fields", classname='form-group'),
         FieldPanel('thank_you_text', classname="full"),
