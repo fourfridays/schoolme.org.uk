@@ -88,6 +88,9 @@ a {
     margin: 1rem 0 !important;
     border-top: 3px solid $secondary;
     border-bottom: 1px solid $secondary;
+    a {
+        color: #eee;
+    }
 }
 
 .btn-primary {
