@@ -177,6 +177,21 @@ header {
             }
         }
     }
+    .donate {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 1;
+        flex-direction: row;
+        display: flex;
+        margin-top: 0;
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 1.3em;
+        ul {
+            list-style: none;
+        }
+    }
 }
 body.trustees {
     nav {
@@ -1943,6 +1958,14 @@ footer {
                 color: $primary;
             }
         }
+        .donate {
+            position: absolute;
+            right: 0;
+            top: 72px;
+            a {
+                font-size: 0.8rem;
+            }
+        }
     }
 /* ==========================================================================
     CONTACT PAGE
@@ -1984,7 +2007,7 @@ footer {
 
 
 /* Landscape phones and down */
-@media (max-width: 480px) { 
+@media (max-width: 480px) {
 /* ==========================================================================
     HERO IMAGES
    ========================================================================== */

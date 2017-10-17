@@ -18,7 +18,12 @@
                 <li class="nav-item">
                     <a class="nav-link {% if menuitem.active %}active{% endif %}" href="{% pageurl menuitem %}">{{ menuitem.title }} {% if menuitem.active %}<span class="sr-only">(current)</span>{% endif %}</a>
                 </li>
-            {% endfor %}                   
+            {% endfor %}          
         </ul>
     </div>
 </nav>
+<div class="donate">
+    <ul>
+        <li><a class="ml-4 btn btn-primary btn-sm" href="/request-demo/">DONATE</a></li>
+    </ul>
+</div>
