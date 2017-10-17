@@ -2,7 +2,7 @@
 
 {% image value.image fill-1920x813-c100 as heroimage %}
 
-<figure {% if value.caption and value.overlay_text is True %}class="overlay"{% endif %}>
+<figure {% if value.caption or value.overlay_text is True %}class="overlay"{% endif %}>
     <img class="img-fluid" src="{{ heroimage.url }}" alt="{{ value.alternate_text }}"/>
     {% if value.caption and value.overlay_text is True %}
         <figcaption>
@@ -16,9 +16,9 @@
             <small><b>Caption:</b> {{ value.caption }}</small>
         </figcaption>
     {% endif %}
-    {% if value.photo_credit %}
+    {% if value.photo_credit and value.photo_credit_link %}
         <div class="photo-credit">
-            <small><b>Photo:</b> {{ value.photo_credit }}</small>
+            <small><b>Photo:</b> <a target="_blank" href="{{ value.photo_credit_link }}">{{ value.photo_credit }}</a></small>
         </div>
     {% endif %}
 </figure>

@@ -246,8 +246,8 @@ body.trustees {
         border-bottom: 1px solid $secondary;
     }
     figure.overlay {
-    position: relative; 
-    width: 100%; /* for IE 6 */
+        position: relative; 
+        width: 100%; /* for IE 6 */
         figcaption {
             max-width: 45%;
             background-color: rgba($primary, 0.8);
@@ -276,6 +276,9 @@ body.trustees {
             color: #fff;
             opacity: 0.5; /* transparency */
             filter: alpha(opacity=50); /* IE transparency */
+            a {
+                color: #eee;
+            }
         }
     }
 }

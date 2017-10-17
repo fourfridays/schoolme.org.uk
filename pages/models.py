@@ -165,7 +165,8 @@ class HeroImageBlock(StructBlock):
     caption = CharBlock(required=False, max_length=120, help_text='Caption will be shown below the image')
     fine_print = CharBlock(required=False, max_length=120, help_text='Fine Print will be shown below caption')
     overlay_text = BooleanBlock(required=False, help_text='If checked, caption is overlayed on image')
-    photo_credit = CharBlock(required=False, max_length=80, help_text='This will show bottom right on the image')
+    photo_credit = CharBlock(required=False, max_length=80, help_text='This will show bottom right on the image. Make sure overlay text is checked')
+    photo_credit_link = CharBlock(required=False, max_length=200, help_text='If you would like the above text to link to a website. Enter complete URL here.')
 
     class Meta:
         template = 'hero_image_block.html'
