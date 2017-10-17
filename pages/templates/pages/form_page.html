@@ -11,7 +11,7 @@
 
                 {{ page.intro|richtext }}
 
-                <form class="sales form-horizontal" action="{% pageurl page %}" method="POST">
+                <form class="mb-3 sales form-horizontal" action="{% pageurl page %}" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <input class="sales-submission" type="submit" value="Submit Form">
