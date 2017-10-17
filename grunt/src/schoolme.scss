@@ -1881,6 +1881,14 @@ footer {
     a {
         color: rgba(189, 189, 189,1.0);
     }
+    p.social-media {
+        a i {
+            color: $secondary;
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
     span.copyright {
         color: $primary;
     }
