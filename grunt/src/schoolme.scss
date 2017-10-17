@@ -1828,7 +1828,6 @@ form {
     input {
         &[type="text"], &[type="email"] {
             @extend .form-control;
-            background-color: $secondary;
         }
         &[required=""]:focus {
             border-color: $primary;
