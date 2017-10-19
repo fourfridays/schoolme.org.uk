@@ -14,7 +14,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, Fie
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 
-from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock, BooleanBlock, ChoiceBlock, PageChooserBlock
+from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock, BooleanBlock, ChoiceBlock, PageChooserBlock, ListBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
@@ -238,6 +238,10 @@ class TrusteesPage(RoutablePageMixin, Page):
         return render(request, 'trustee.html', context)
 
 
+class MediaGalleryBlock(StructBlock):
+    image = ImageChooserBlock()
+
+
 class Pages(Page):
     body = StreamField([
         ('single_column', SingleColumnBlock(group='COLUMNS')),
@@ -247,6 +251,7 @@ class Pages(Page):
         ('starfish', StarFishBlock()),
         ('trustee_page', PageChooserBlock(template='trustee_widget.html')),
         ('hero_image', HeroImageBlock(icon='image')),
+        ('media_gallery', ListBlock(MediaGalleryBlock(), template='media_gallery_block.html', icon="image")),
     ],default='')
 
     content_panels = Page.content_panels + [
