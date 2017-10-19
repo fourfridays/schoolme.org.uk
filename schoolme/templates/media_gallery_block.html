@@ -1,4 +1,4 @@
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 
 <article>
@@ -7,7 +7,9 @@
             {% for images in self %}
                 <div class="">
                     {% image images.image width-200 as theimage %}
-                    <img class="img-fluid rounded m-2 d-block" src="{{ theimage.url }}" alt="{{ theimage.alt }}"/>
+                    {% image images.image width-440 as lightboximage %}
+                    <a href="{{ lightboximage.url }}" data-lightbox="{{ theimage.alt }}" data-title="{{ theimage.alt }}"><img class="img-fluid rounded m-2 d-block" src="{{ theimage.url }}" width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}" /></a>
+    <p class="py-0 small">Touch/Click to Enlarge</p>
                 </div>
             {% endfor %}
         </div>
