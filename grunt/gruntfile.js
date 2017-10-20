@@ -26,6 +26,7 @@ module.exports = function(grunt) {
       dist: {                            // Target
         files: {                         // Dictionary of files
           //'/mnt/volume-nyc1-01-part4/static/css/flinthillsparanormal.css': 'src/flinthillsparanormal.scss'
+          '../static/css/starfish.css': 'src/starfish.scss',
           '../static/css/schoolme.css': 'src/schoolme.scss'
         }
       }

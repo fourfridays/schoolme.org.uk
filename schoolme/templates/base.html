@@ -14,7 +14,10 @@
 
         {# Global stylesheets #}
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Rancho" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/schoolme.css' %}">
+        {% if self.seo_title == 'Home' %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/starfish.min.css' %}">
+        {% endif %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/schoolme.min.css' %}">
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
