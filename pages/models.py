@@ -57,6 +57,12 @@ class FontAwesomeIconSizeBlock(FieldBlock):
         ('5x', 'fa-5x'),
     ))
 
+class FontAwesomeIconTypeBlock(ChoiceBlock):
+    choices = [
+        ('regular', 'Regular'),
+        ('brand', 'Brand')
+    ]
+
 
 class MaterialIconSizeBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
@@ -84,6 +90,7 @@ class PullQuoteBlock(StructBlock):
 class IconBlock(StructBlock):
     font_awesome_icon_name = CharBlock(required=False)
     font_awesome_icon_size = FontAwesomeIconSizeBlock()
+    font_awesome_icon_choice = FontAwesomeIconTypeBlock(required=False, default='regular')
     material_icon_name = CharBlock(required=False)
     material_icon_size = MaterialIconSizeBlock()
     alignment = AlignmentChoiceBlock(default='normal')

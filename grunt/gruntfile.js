@@ -5,14 +5,16 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         concat: {
             dist: {
-                src: ['node_modules/jquery/dist/jquery.slim.min.js', 'node_modules/bootstrap/js/dist/util.js', 'node_modules/bootstrap/js/dist/collapse.js', 'src/schoolme.js'],
+                src: ['node_modules/jquery/dist/jquery.slim.min.js', 'node_modules/bootstrap/js/dist/util.js', 'node_modules/bootstrap/js/dist/collapse.js', 'src/fa-brands.min.js', 'src/fa-regular.min.js', 'src/fontawesome.min.js', 'src/schoolme.js'],
                 dest: 'dist/js/schoolme.js'
             }
         },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-                compress: true
+                mangle: true,
+                compress: true,
+                beautify: false
         },
         dist: {
             files: {
@@ -44,7 +46,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: 'src/*.*',
-        tasks: ['concat', 'uglify', 'sass'],
+        tasks: ['concat', 'uglify', 'sass', 'cssmin'],
         //tasks: ['sass'],
         options: {
           livereload: true

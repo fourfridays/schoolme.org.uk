@@ -1,5 +1,4 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
-@import 'font-awesome-custom';
 
 $primary: rgba(11, 106, 179, 1);
 $secondary: rgba(126, 179, 79, 1);
@@ -54,7 +53,7 @@ $font-color: rgba(33, 33, 33 ,1);
 .material-icons.md-108 { font-size: 108px; }
 .material-icons.md-120 { font-size: 120px; }
 
-.fa {
+.svg-inline--fa {
     color: $secondary;
 }
 
