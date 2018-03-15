@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailimages.blocks
+import wagtail.core.blocks
+import wagtail.core.fields
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='formpage',
             name='image',
-            field=wagtail.wagtailcore.fields.StreamField((('hero_image', wagtail.wagtailcore.blocks.StructBlock((('image', wagtail.wagtailimages.blocks.ImageChooserBlock(required=True)), ('alternate_text', wagtail.wagtailcore.blocks.CharBlock(help_text='Text for screen readers')), ('caption', wagtail.wagtailcore.blocks.CharBlock(help_text='Caption will be shown below the image', max_length=120, required=False)), ('fine_print', wagtail.wagtailcore.blocks.CharBlock(help_text='Fine Print will be shown below caption', max_length=120, required=False)), ('overlay_text', wagtail.wagtailcore.blocks.BooleanBlock(help_text='If checked, caption is overlayed on image', required=False)), ('photo_credit', wagtail.wagtailcore.blocks.CharBlock(help_text='This will show bottom right on the image', max_length=80, required=False))), icon='image')),), default=''),
+            field=wagtail.core.fields.StreamField((('hero_image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock(required=True)), ('alternate_text', wagtail.core.blocks.CharBlock(help_text='Text for screen readers')), ('caption', wagtail.core.blocks.CharBlock(help_text='Caption will be shown below the image', max_length=120, required=False)), ('fine_print', wagtail.core.blocks.CharBlock(help_text='Fine Print will be shown below caption', max_length=120, required=False)), ('overlay_text', wagtail.core.blocks.BooleanBlock(help_text='If checked, caption is overlayed on image', required=False)), ('photo_credit', wagtail.core.blocks.CharBlock(help_text='This will show bottom right on the image', max_length=80, required=False))), icon='image')),), default=''),
         ),
     ]
