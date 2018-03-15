@@ -108,3 +108,6 @@ ENV/
 .ropeproject
 /grunt/.sass-cache
 /gunicorn.conf.py
+/grunt/src/fontawesome.min.js
+/grunt/src/fa-regular.min.js
+/grunt/src/fa-brands.min.js
