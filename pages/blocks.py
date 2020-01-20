@@ -132,6 +132,14 @@ class HeadingBlock(StructBlock):
         template = 'blocks/heading_block.html'
 
 
+class StarFishBlock(StructBlock):
+    html = RawHTMLBlock()
+
+    class Meta:
+        template = 'starfish_block.html'
+        label = 'Starfish'
+
+
 # StreamBlocks
 class BaseStreamBlock(StreamBlock):
     """

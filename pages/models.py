@@ -15,7 +15,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
-from .blocks import ImageGridBlock, BaseStreamBlock, SingleColumnBlock, TwoColumnBlock, ThreeColumnBlock, FourColumnBlock
+from .blocks import *
 
 
 class StandardPage(Page):
@@ -68,6 +68,7 @@ class StandardPage(Page):
         ('three_columns', ThreeColumnBlock(group='COLUMNS')),
         ('four_columns', FourColumnBlock(group='COLUMNS')),
         ('image_grid', ImageGridBlock(icon='image', min_num=2, max_num=4, help_text='Minimum 2 blocks and a maximum of 4 blocks')),
+        ('starfish', StarFishBlock()),
     ],default='')
 
     content_panels = Page.content_panels + [
