@@ -136,7 +136,7 @@ class StarFishBlock(StructBlock):
     html = RawHTMLBlock()
 
     class Meta:
-        template = 'starfish_block.html'
+        template = 'blocks/starfish_block.html'
         label = 'Starfish'
 
 

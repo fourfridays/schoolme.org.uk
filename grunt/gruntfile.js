@@ -27,6 +27,7 @@ module.exports = function(grunt) {
       dist: {                            // Target
         files: {                         // Dictionary of files
           //'/home/umairabbasi/sites/umairabbasi/static/css/umairabbasi.css': 'src/umairabbasi.scss'
+          'dist/starfish.css': 'src/starfish.scss',
           'dist/schoolme.css': 'src/schoolme.scss'
         }
       }
