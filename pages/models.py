@@ -46,6 +46,11 @@ class StandardPage(Page):
         max_length=80,
         help_text='80 character limit. This will show on the bottom right on the image'
         )
+    hero_photo_credit_link = models.URLField(
+        null=True,
+        blank=True,
+        help_text='If you would like the above text to link to a website. Enter complete URL here.'
+        )
     hero_cta = models.CharField(
         null=True,
         blank=True,
@@ -77,6 +82,7 @@ class StandardPage(Page):
             FieldPanel('hero_heading', classname='full'),
             FieldPanel('hero_caption', classname='full'),
             FieldPanel('hero_photo_credit', classname='full'),
+            FieldPanel('hero_photo_credit_link', classname='full'),
             MultiFieldPanel([
                 FieldPanel('hero_cta'),
                 PageChooserPanel('hero_cta_link'),

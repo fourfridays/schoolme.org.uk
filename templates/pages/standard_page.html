@@ -9,17 +9,20 @@
             <figure>
                 <img class="img-fluid" src="{{ heroimage.url }}" alt="{{ page.hero_image.title }}"/>
                 {% if page.hero_heading or page.hero_caption or page.hero_photo_credit %}
-                    <figcaption class="p-3">
-                        {% if page.hero_heading %}
-                            <h2>{{ page.hero_heading }}</h2>
-                        {% endif %}
-                        {% if page.hero_caption %}
-                            <p class="d-none d-sm-block"><small>{{ page.hero_caption }}</small></p>
-                        {% endif %}
-                    </figcaption>
+                    {% if page.hero_heading or page.hero_caption %}
+                        <figcaption class="p-3">
+                            {% if page.hero_heading %}
+                                <h2>{{ page.hero_heading }}</h2>
+                            {% endif %}
+                            {% if page.hero_caption %}
+                                <p class="d-none d-sm-block"><small>{{ page.hero_caption }}</small></p>
+                            {% endif %}
+                        </figcaption>
+                    {% endif %}
+
                     {% if page.hero_photo_credit %}
                         <div class="photo-credit d-none d-sm-block p-1">
-                            <small><b>Photo:</b> {{ page.hero_photo_credit }}</small>
+                            <small><b>Photo:</b> {% if page.hero_photo_credit_link %}<a target="_blank" href="{{ page.hero_photo_credit_link }}">{% endif %}{{ page.hero_photo_credit }}{% if page.hero_photo_credit_link %}</a>{% endif %}</small>
                         </div>
                     {% endif %}
                 {% endif %}
