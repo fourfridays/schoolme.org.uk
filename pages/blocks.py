@@ -10,9 +10,9 @@ from wagtail.contrib.table_block.blocks import TableBlock
 
 class AlignmentBlock(ChoiceBlock):
     choices = [
-        ('left', 'Left'),
-        ('center', 'Center'),
-        ('right', 'Right')
+        ('text-left', 'Left'),
+        ('text-center', 'Center'),
+        ('text-right', 'Right')
     ]
 
 
