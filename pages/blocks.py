@@ -18,7 +18,7 @@ class AlignmentBlock(ChoiceBlock):
 
 class AlignedRAWHTMLBlock(StructBlock):
     html = RawHTMLBlock()
-    alignment = AlignmentBlock(default='left')
+    alignment = AlignmentBlock(default='text-left')
 
     class Meta:
         template = 'blocks/aligned_raw_html_block.html'
