@@ -17,9 +17,36 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.contrib.forms.models import AbstractFormField, AbstractEmailForm
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from wagtail.search import index
 
 from .blocks import *
+
+from modelcluster.fields import ParentalKey
+
+
+class FormField(AbstractFormField):
+    page = ParentalKey('FormPage', related_name='form_fields')
+
+
+class FormPage(WagtailCaptchaEmailForm):
+    intro = RichTextField(blank=True)
+    thank_you_text = RichTextField(blank=True)
+
+FormPage.content_panels = [
+    FieldPanel('title', classname='full'),
+    FieldPanel('intro', classname='full'),
+    InlinePanel('form_fields', label='Form fields', classname='form-group'),
+    FieldPanel('thank_you_text', classname='full'),
+    MultiFieldPanel([
+        FieldRowPanel([
+            FieldPanel('from_address', classname='col6'),
+            FieldPanel('to_address', classname='col6'),
+        ]),
+        FieldPanel('subject'),
+    ], 'Email'),
+]
 
 
 class StandardPage(Page):

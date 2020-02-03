@@ -34,6 +34,7 @@ INSTALLED_ADDONS = [
 
 import aldryn_addons.settings
 aldryn_addons.settings.load(locals())
+import os
 
 # Your own Django settings can be applied from here on. Key settings like
 # INSTALLED_APPS, MIDDLEWARE and TEMPLATES are provided in the Aldryn Django
@@ -45,10 +46,12 @@ aldryn_addons.settings.load(locals())
 
 INSTALLED_APPS.extend([
     'pages',
+    'captcha',
+    'wagtailcaptcha',
 
     'wagtail.contrib.table_block',
 ])
 
-# To see the settings that have been applied, use the Django diffsettings 
-# management command. 
-# See https://docs.divio.com/en/latest/how-to/configure-settings.html#list
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY', default='')
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY', default='')
+NOCAPTCHA = True
