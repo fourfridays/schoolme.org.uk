@@ -31,10 +31,69 @@ class FormField(AbstractFormField):
 
 
 class FormPage(WagtailCaptchaEmailForm):
+    # Hero section of Page
+    hero_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='2400X858px'
+    )
+    hero_heading = models.CharField(
+        null=True,
+        blank=True,
+        max_length=140,
+        help_text='40 character limit.'
+        )
+    hero_caption = models.CharField(
+        null=True,
+        blank=True,
+        max_length=140,
+        help_text='140 character limit.'
+        )
+    hero_photo_credit = models.CharField(
+        null=True,
+        blank=True,
+        max_length=80,
+        help_text='80 character limit. This will show on the bottom right on the image'
+        )
+    hero_photo_credit_link = models.URLField(
+        null=True,
+        blank=True,
+        help_text='If you would like the above text to link to a website. Enter complete URL here.'
+        )
+    hero_cta = models.CharField(
+        null=True,
+        blank=True,
+        verbose_name='Hero CTA',
+        max_length=20,
+        help_text='Text to display on Call to Action. 20 character limit.'
+        )
+    hero_cta_link = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Hero CTA link',
+        help_text='Choose a page to link the Call to Action'
+    )
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
 
 FormPage.content_panels = [
+    MultiFieldPanel([
+        ImageChooserPanel('hero_image'),
+        FieldPanel('hero_heading', classname='full'),
+        FieldPanel('hero_caption', classname='full'),
+        FieldPanel('hero_photo_credit', classname='full'),
+        FieldPanel('hero_photo_credit_link', classname='full'),
+        MultiFieldPanel([
+            FieldPanel('hero_cta'),
+            PageChooserPanel('hero_cta_link'),
+            ])
+        ], heading='Hero Image'),
     FieldPanel('title', classname='full'),
     FieldPanel('intro', classname='full'),
     InlinePanel('form_fields', label='Form fields', classname='form-group'),
