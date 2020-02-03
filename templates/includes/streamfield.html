@@ -49,6 +49,9 @@
                     <img class="img-fluid img-thumbnail{% if child.value.image_alignment != 'center' %} float-{{ child.value.image_alignment }} {% else %} mx-auto d-block{% endif %}" src="{{ theimage.url }}" width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}" />
             </figure>
 
+        {% elif child.block_type == 'document' %}
+            <i class="far fa-file-pdf fa-lg" aria-hidden="true"></i> {{ child }}
+
         {% else %}
             {{ child }}
         {% endif %}
