@@ -1,5 +1,6 @@
 from django import forms
 
+from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.core.blocks import (
@@ -155,6 +156,7 @@ class BaseStreamBlock(StreamBlock):
         template='blocks/paragraph_block.html'
     )
     image_block = ImageBlock()
+    document = DocumentChooserBlock(icon='doc-full-inverse')
     button_block = ButtonBlock()
     image_grid_block = ImageGridBlock()
     embed_block = EmbedBlock(
