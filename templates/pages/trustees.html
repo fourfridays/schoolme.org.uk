@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="my-4">Trustees</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for member in dir %}
+            <div class="col-sm-6 col-md-3">
+                {% image member.image fill-170x180-c100 as image %}
+                    <figure>
+                        <a href="/trustees/{{ member.first_name.lower }}">
+                            <img class="img-fluid img-thumbnail rounded" src="{{ image.url }}" alt="{{ image.alt }}"/>
+                        </a>
+                    </figure>
+                    <h2>{{ member.first_name }} {{ member.last_name }}</h2>
+                    <p class="small">{{ member.title }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

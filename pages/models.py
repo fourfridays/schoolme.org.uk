@@ -12,6 +12,7 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
@@ -74,6 +75,8 @@ class StandardPage(Page):
         ('four_columns', FourColumnBlock(group='COLUMNS')),
         ('image_grid', ImageGridBlock(icon='image', min_num=2, max_num=4, help_text='Minimum 2 blocks and a maximum of 4 blocks')),
         ('starfish', StarFishBlock()),
+        ('trustee_page', PageChooserBlock(template='trustee_widget.html')),
+        ('media_gallery', ListBlock(MediaGalleryBlock(), template='blocks/media_gallery_block.html', icon="image")),
     ],default='')
 
     content_panels = Page.content_panels + [
@@ -90,3 +93,26 @@ class StandardPage(Page):
             ], heading='Hero Image'),
         StreamFieldPanel('body'),
     ]
+
+
+class TrusteesPage(RoutablePageMixin, Page):
+    directory = StreamField([
+        ('person', TrusteesBlock())
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('directory'),
+    ]
+    
+    @route(r'^$')
+    def get_context(self, value):
+        context = super(TrusteesPage, self).get_context(value)
+        context['dir'] = [block.value for block in self.directory]
+        return render(value, 'trustees.html', context)
+
+    @route(r'^(?P<first_name>[a-z]+)/$')
+    def get_name(self, request, first_name):
+        context = super(TrusteesPage, self).get_context(request)
+        context['name'] = first_name
+        context['names'] = [block.value for block in self.directory]
+        return render(request, 'trustee.html', context)

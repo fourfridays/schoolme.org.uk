@@ -3,7 +3,7 @@ from django import forms
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.core.blocks import (
-    BooleanBlock, CharBlock, ChoiceBlock, FieldBlock, PageChooserBlock, RawHTMLBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock, URLBlock
+    BooleanBlock, CharBlock, ChoiceBlock, FieldBlock, ListBlock, PageChooserBlock, RawHTMLBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock, URLBlock
 )
 from wagtail.contrib.table_block.blocks import TableBlock
 
@@ -111,6 +111,10 @@ class ImageGridBlock(StreamBlock):
         template = 'blocks/image_grid_block.html'
 
 
+class MediaGalleryBlock(StructBlock):
+    image = ImageChooserBlock()
+
+
 class HeadingBlock(StructBlock):
     """
     Custom `StructBlock` that allows the user to select h2 - h6 sizes for headers
@@ -206,3 +210,20 @@ class FourColumnBlock(StructBlock):
     class Meta:
         label = 'Four Columns'
         template = 'blocks/four_column_block.html'
+
+
+class TrusteesBlock(StructBlock):
+    prefix = ChoiceBlock(choices=[
+        ('Dr', 'Dr.'),
+        ('Mr', 'Mr.'),
+        ('Mrs', 'Mrs.'),
+        ('Ms', 'Ms.'),
+        ])
+    first_name = CharBlock()
+    last_name =  CharBlock()
+    title = CharBlock()
+    description = RichTextBlock()
+    image = ImageChooserBlock()
+
+    class Meta:
+        template = "blocks/trustees_block.html"
