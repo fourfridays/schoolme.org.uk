@@ -4,9 +4,7 @@
 # this functionality by simply removing the wrapping tags.
 # </WARNING>
 
-# <DOCKER_FROM>
-FROM divio/base:4.18-py3.6-slim-stretch
-# </DOCKER_FROM>
+FROM python:3.9.7-slim-bullseye
 
 # <NPM>
 # </NPM>
@@ -14,22 +12,23 @@ FROM divio/base:4.18-py3.6-slim-stretch
 # <BOWER>
 # </BOWER>
 
-ENV PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/+simple/} \
-    WHEELSPROXY_URL=${WHEELSPROXY_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/}
+RUN apt-get update \
+    # lipq-dev and gg for psycopg2 build
+    && apt-get install -y libpq-dev gcc libjpeg62-turbo-dev zlib1g-dev libwebp-dev \
+    && pip install pip-tools==5.5.0
+
+
+# set the working directory
+WORKDIR /app
+# copy the repository files to it
+COPY . /app
+
 COPY requirements.* /app/
 COPY addons-dev /app/addons-dev/
-RUN pip-reqs resolve && \
-    pip install \
-        --no-index --no-deps \
-        --requirement requirements.urls
+RUN pip-compile
+RUN pip install -r requirements.txt
 
-# <SOURCE>
-COPY . /app
-# </SOURCE>
+RUN python manage.py collectstatic --noinput
 
-# <GULP>
-# </GULP>
-
-# <STATIC>
-RUN DJANGO_MODE=build python manage.py collectstatic --noinput
-# </STATIC>
+EXPOSE 80
+CMD uwsgi --http=0.0.0.0:80 --module=wsgi
