@@ -16,8 +16,6 @@ botocore==1.23.52
     # via
     #   boto3
     #   s3transfer
-captcha==0.3
-    # via -r requirements.in
 certifi==2021.10.8
     # via
     #   requests
@@ -30,8 +28,10 @@ django-filter==21.1
     # via wagtail
 django-modelcluster==5.2
     # via wagtail
-django-recaptcha==3.0.0
-    # via wagtail-django-recaptcha
+django-recaptcha==3.0
+    # via
+    #   -r requirements.in
+    #   wagtail-django-recaptcha
 django-storage-url==0.8.1
     # via -r requirements.in
 django-storages==1.12.3
@@ -76,7 +76,6 @@ orderedmultidict==1.0.1
 pillow==8.4.0
     # via
     #   -r requirements.in
-    #   captcha
     #   wagtail
 psycopg2==2.9.3
     # via -r requirements.in
