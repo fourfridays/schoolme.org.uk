@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'captcha',
     'wagtailcaptcha',
 
+    'django.contrib.sitemaps',
+
     'wagtail.contrib.table_block',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
