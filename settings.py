@@ -201,3 +201,6 @@ PREPEND_WWW = os.environ.get('PREPEND_WWW', default=False)
 # Make low-quality but small images
 WAGTAILIMAGES_JPEG_QUALITY = 40
 WAGTAILIMAGES_WEBP_QUALITY = 45
+
+# to disable the checkDATA_UPLOAD_MAX_NUMBER_FIELDS = None
+DATA_UPLOAD_MAX_NUMBER_FIELDS = None
