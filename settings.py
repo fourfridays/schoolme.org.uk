@@ -101,8 +101,8 @@ DIVIO_DOMAIN_REDIRECTS = [
 
 ALLOWED_HOSTS = [DIVIO_DOMAIN] + DIVIO_DOMAIN_ALIASES + DIVIO_DOMAIN_REDIRECTS
 
-# Redirect to HTTPS by default, unless explicitly disabled
-SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT') != "False"
+# Redirect to HTTPS by default disabled, unless explicitly enabled
+SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT') == "True"
 
 TEMPLATES = [
     {
@@ -196,6 +196,7 @@ RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY', default='')
 NOCAPTCHA = False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+PREPEND_WWW = os.environ.get('PREPEND_WWW', default=False)
 
 # Make low-quality but small images
 WAGTAILIMAGES_JPEG_QUALITY = 40
