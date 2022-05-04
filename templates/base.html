@@ -16,6 +16,8 @@
         {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        {% if self.seo_title == 'Home' %}<link rel="canonical" href="{{ page.full_url }}" />{% endif %}
+
         {# Global stylesheets #}
         <!-- FONTAWESOME FREE -->
         <link rel="preload" href="{% static 'fontawesomefree/css/all.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
