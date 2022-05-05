@@ -16,11 +16,26 @@ class AlignmentBlock(ChoiceBlock):
         ('right', 'Right')
     ]
 
+    # Returning CSS Framework classes
+    def get_alignment_class(self):
+        if self == 'left':
+            return 'start'
+        elif self == 'center':
+            return 'center'
+        elif self == 'right':
+            return 'end'
+
 
 class AlignedRAWHTMLBlock(StructBlock):
     html = RawHTMLBlock()
     alignment = AlignmentBlock(default='left')
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
+        
     class Meta:
         template = 'blocks/aligned_raw_html_block.html'
 
@@ -54,9 +69,16 @@ class ButtonBlock(StructBlock):
 
     ])
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
+
     class Meta:
         icon = 'pick'
         template = 'blocks/button_block.html'
+
 
 class IconBlock(StructBlock):
     icon = ChoiceBlock([
@@ -78,6 +100,12 @@ class IconBlock(StructBlock):
     ], required=False)
     alignment = AlignmentBlock(default='left')
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
+
     class Meta:
         icon = 'wagtail'
         template = 'blocks/icon_block.html'
@@ -93,6 +121,12 @@ class ImageBlock(StructBlock):
     attribution = CharBlock(required=False)
     alignment = AlignmentBlock(default='left', required=False)
     border = BooleanBlock(required=False, help_text='Adds border around image')
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
 
     class Meta:
         icon = 'image'
@@ -131,6 +165,12 @@ class HeadingBlock(StructBlock):
         ('h6', 'H6')
     ], blank=True, required=False)
     alignment = AlignmentBlock(default='left', required=False)
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
 
     class Meta:
         icon = 'pilcrow'
@@ -173,6 +213,12 @@ class SingleColumnBlock(StructBlock):
     alignment = AlignmentBlock(default='left')
     background_color = BackgroundColorBlock()
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
+
     class Meta:
         label = 'Single Column'
         template = 'blocks/single_column_block.html'
@@ -183,6 +229,12 @@ class TwoColumnBlock(StructBlock):
     right_column = BaseStreamBlock()
     alignment = AlignmentBlock(default='left')
     background_color = BackgroundColorBlock()
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
 
     class Meta:
         label = 'Two Columns'
@@ -196,6 +248,12 @@ class ThreeColumnBlock(StructBlock):
     alignment = AlignmentBlock(default='left')
     background_color = BackgroundColorBlock()
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
+
     class Meta:
         label = 'Three Columns'
         template = 'blocks/three_column_block.html'
@@ -208,6 +266,12 @@ class FourColumnBlock(StructBlock):
     right_column_2 = BaseStreamBlock()
     alignment = AlignmentBlock(default='left')
     background_color = BackgroundColorBlock()
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+        # Context for adding Bootstrap class variable
+        context['alignment_class'] = AlignmentBlock.get_alignment_class(value['alignment'])
+        return context
 
     class Meta:
         label = 'Four Columns'

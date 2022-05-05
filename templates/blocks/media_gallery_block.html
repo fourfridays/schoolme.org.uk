@@ -4,7 +4,7 @@
     <div class="container">
         <div class="mb-2 row justify-content-center">
             {% for images in self %}
-                {% image images.image fill-200x200 class="img-fluid rounded m-2" %}
+                <div class="col-6 col-md-3">{% image images.image fill-200x200 class="img-fluid rounded m-2" %}</div>
             {% endfor %}
         </div>
     </div>

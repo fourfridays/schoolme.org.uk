@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         concat: {
             dist: {
-                src: ['node_modules/jquery/dist/jquery.js', 'node_modules/popper.js/dist/umd/popper.min.js', 'node_modules/bootstrap/js/dist/util.js', 'node_modules/bootstrap/js/dist/collapse.js', 'node_modules/bootstrap/js/dist/dropdown.js', 'src/schoolme.js'],
+                src: ['node_modules/bootstrap/dist/js/bootstrap.min.js', 'src/schoolme.js'],
                 dest: 'dist/schoolme.js'
             }
         },
@@ -18,7 +18,6 @@ module.exports = function(grunt) {
         },
         dist: {
             files: {
-                //'/home/umairabbasi/sites/umairabbasi/static/js/umairabbasi.min.js': ['<%= concat.dist.dest %>'],
                 '../static/js/schoolme.min.js': ['<%= concat.dist.dest %>'],
             }
         }
