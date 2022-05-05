@@ -255,7 +255,6 @@ body.trustees {
    ========================================================================== */
 form {
     p {
-        @extend .form-group, .row;
         span.helptext {
             @extend .small;
         }
