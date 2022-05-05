@@ -10,7 +10,7 @@
 
     {% block main_navigation %}
         <div class="collapse navbar-collapse" id="main-navigation" role="navigation" aria-label="Primary site navigation">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                 {# main_menu is defined in pages/templatetags/navigation_tags.py #}
                 {% get_site_root as site_root %}
@@ -21,6 +21,6 @@
 </nav>
 <div class="donate">
     <ul>
-        <li><a class="ml-4 btn btn-primary btn-sm" href="/donate/">DONATE</a></li>
+        <li><a class="ms-4 btn btn-primary btn-sm" href="/donate/">DONATE</a></li>
     </ul>
 </div>
