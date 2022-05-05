@@ -1,4 +1,4 @@
-<div class="text-{{ self.alignment }}">
+<div class="text-{{ alignment_class }}">
     <p>
         <a class="btn btn-{{ self.size }} btn-{{ self.color }}" href="{% if self.internal_link %}{{ self.internal_link }}{% else %}{{ self.external_link }}{% endif %}">{{ self.cta_text }}</a>
     </p>
