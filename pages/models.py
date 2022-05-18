@@ -5,18 +5,15 @@ from django.template.response import TemplateResponse
 
 from modelcluster.models import ClusterableModel
 
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
     FieldRowPanel,
     InlinePanel,
-    MultiFieldPanel,
-    PageChooserPanel,
-    StreamFieldPanel,
+    MultiFieldPanel
 )
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.contrib.forms.models import AbstractFormField, AbstractEmailForm
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from wagtail.search import index
@@ -84,14 +81,14 @@ class FormPage(WagtailCaptchaEmailForm):
 
 FormPage.content_panels = [
     MultiFieldPanel([
-        ImageChooserPanel('hero_image'),
+        FieldPanel('hero_image'),
         FieldPanel('hero_heading', classname='full'),
         FieldPanel('hero_caption', classname='full'),
         FieldPanel('hero_photo_credit', classname='full'),
         FieldPanel('hero_photo_credit_link', classname='full'),
         MultiFieldPanel([
             FieldPanel('hero_cta'),
-            PageChooserPanel('hero_cta_link'),
+            FieldPanel('hero_cta_link'),
             ])
         ], heading='Hero Image'),
     FieldPanel('title', classname='full'),
@@ -166,31 +163,31 @@ class StandardPage(Page):
         ('starfish', StarFishBlock()),
         ('trustee_page', PageChooserBlock(template='trustee_widget.html')),
         ('media_gallery', ListBlock(MediaGalleryBlock(), template='blocks/media_gallery_block.html', icon="image")),
-    ],default='')
+    ], use_json_field=True, default='')
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
-            ImageChooserPanel('hero_image'),
+            FieldPanel('hero_image'),
             FieldPanel('hero_heading', classname='full'),
             FieldPanel('hero_caption', classname='full'),
             FieldPanel('hero_photo_credit', classname='full'),
             FieldPanel('hero_photo_credit_link', classname='full'),
             MultiFieldPanel([
                 FieldPanel('hero_cta'),
-                PageChooserPanel('hero_cta_link'),
+                FieldPanel('hero_cta_link'),
                 ])
             ], heading='Hero Image'),
-        StreamFieldPanel('body'),
+        FieldPanel('body'),
     ]
 
 
 class TrusteesPage(RoutablePageMixin, Page):
     directory = StreamField([
         ('person', TrusteesBlock())
-    ])
+    ], use_json_field=True)
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('directory'),
+        FieldPanel('directory'),
     ]
     
     @route(r'^$')

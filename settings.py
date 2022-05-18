@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail',
 
     'modelcluster',
     'taggit',
@@ -182,6 +182,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join('/data/media/')
 
 WAGTAIL_SITE_NAME = 'SchoolMe'
+WAGTAILADMIN_BASE_URL = 'https://www.schoolme.org.uk/'
 
 # DJANGO ANYMAIL
 ANYMAIL = {
