@@ -102,6 +102,8 @@ DIVIO_DOMAIN_REDIRECTS = [
 
 ALLOWED_HOSTS = [DIVIO_DOMAIN] + DIVIO_DOMAIN_ALIASES + DIVIO_DOMAIN_REDIRECTS
 
+CSRF_TRUSTED_ORIGINS = [os.environ.get('CSRF_TRUSTED_ORIGINS', default='https://schoolme.org.uk')]
+
 # Redirect to HTTPS by default disabled, unless explicitly enabled
 SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT') == "True"
 
@@ -148,11 +150,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-TIME_ZONE = 'America/Los_Angeles'
 LANGUAGE_CODE = 'en-us'
 USE_I18N = True
 USE_TZ = True
-USE_L10N = True
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -182,7 +182,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join('/data/media/')
 
 WAGTAIL_SITE_NAME = 'SchoolMe'
-WAGTAILADMIN_BASE_URL = 'https://www.schoolme.org.uk/'
+WAGTAILADMIN_BASE_URL = 'https://schoolme.org.uk/'
 
 # DJANGO ANYMAIL
 ANYMAIL = {
@@ -203,6 +203,7 @@ PREPEND_WWW = os.environ.get('PREPEND_WWW', default=False)
 # Make low-quality but small images
 WAGTAILIMAGES_JPEG_QUALITY = 40
 WAGTAILIMAGES_WEBP_QUALITY = 45
+WAGTAIL_ENABLE_WHATS_NEW_BANNER = False
 
 # to disable the checkDATA_UPLOAD_MAX_NUMBER_FIELDS = None
 DATA_UPLOAD_MAX_NUMBER_FIELDS = None
