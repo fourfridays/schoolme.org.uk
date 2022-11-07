@@ -182,7 +182,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join('/data/media/')
 
 WAGTAIL_SITE_NAME = 'SchoolMe'
-WAGTAILADMIN_BASE_URL = 'https://www.schoolme.org.uk/'
+WAGTAILADMIN_BASE_URL = 'https://schoolme.org.uk/'
 
 # DJANGO ANYMAIL
 ANYMAIL = {
