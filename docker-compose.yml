@@ -25,7 +25,7 @@ services:
   # On the Cloud, your database runs on a dedicated cluster. Locally, we
   # replicate it in a Docker container called "db".
   db:
-    image: postgres:latest
+    image: postgres
     container_name: schoolme-db
     environment:
       POSTGRES_DB: "db"
