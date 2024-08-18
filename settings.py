@@ -6,14 +6,6 @@ from django_storage_url import dsn_configured_storage_class
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Your own Django settings can be applied from here on. Key settings like
-# INSTALLED_APPS, MIDDLEWARE and TEMPLATES are provided in the Aldryn Django
-# addon. See:
-#
-#   http://docs.divio.com/en/latest/how-to/configure-settings.html
-#
-# for guidance on managing these settings.
-
 INSTALLED_APPS = [
     "anymail",
     "fontawesomefree",
