@@ -1,19 +1,29 @@
 from django.db import models
 from django.shortcuts import render
 
-from wagtail.admin.panels import (
-    FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
-)
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV3
+
+from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.contrib.forms.models import AbstractFormField
+
+from wagtailcaptcha.forms import WagtailCaptchaFormBuilder
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from .blocks import (
-    SingleColumnBlock, TwoColumnBlock, ThreeColumnBlock,
-    FourColumnBlock, ImageGridBlock, StarFishBlock,
-    PageChooserBlock, ListBlock, MediaGalleryBlock, TrusteesBlock
+    SingleColumnBlock,
+    TwoColumnBlock,
+    ThreeColumnBlock,
+    FourColumnBlock,
+    ImageGridBlock,
+    StarFishBlock,
+    PageChooserBlock,
+    ListBlock,
+    MediaGalleryBlock,
+    TrusteesBlock,
 )
 
 from modelcluster.fields import ParentalKey
@@ -23,7 +33,18 @@ class FormField(AbstractFormField):
     page = ParentalKey("FormPage", related_name="form_fields")
 
 
+class CaptchaV3FormBuilder(WagtailCaptchaFormBuilder):
+    @property
+    def formfields(self):
+        fields = super(WagtailCaptchaFormBuilder, self).formfields
+        fields[self.CAPTCHA_FIELD_NAME] = ReCaptchaField(
+            label="", widget=ReCaptchaV3(action="form-submit")
+        )
+        return fields
+
+
 class FormPage(WagtailCaptchaEmailForm):
+    form_builder = CaptchaV3FormBuilder
     # Hero section of Page
     hero_image = models.ForeignKey(
         "wagtailimages.Image",
