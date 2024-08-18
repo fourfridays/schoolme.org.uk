@@ -38,7 +38,7 @@ class CaptchaV3FormBuilder(WagtailCaptchaFormBuilder):
     def formfields(self):
         fields = super(WagtailCaptchaFormBuilder, self).formfields
         fields[self.CAPTCHA_FIELD_NAME] = ReCaptchaField(
-            label="", widget=ReCaptchaV3(action="form-submit")
+            label="", widget=ReCaptchaV3()
         )
         return fields
 
