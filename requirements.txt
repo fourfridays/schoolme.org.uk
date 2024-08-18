@@ -54,9 +54,7 @@ django-modelcluster==6.3
 django-permissionedforms==0.1
     # via wagtail
 django-recaptcha==4.0.0
-    # via
-    #   -r requirements.in
-    #   wagtail-django-recaptcha
+    # via wagtail-django-recaptcha
 django-storage-url==0.12.0
     # via -r requirements.in
 django-storages==1.14.4
