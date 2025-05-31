@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  DJANGO_DEBUG: "False"
+  DOMAIN_ALIASES: "schoolme.org.uk"
+  DJANGO_LOGLEVEL: "info"
+  WAGTAILADMIN_BASE_URL: "https://schoolme.org.uk"
+  WAGTAIL_SITE_NAME: "Umair Abbasi"
+  CSRF_TRUSTED_ORIGINS: "https://schoolme.org.uk"
