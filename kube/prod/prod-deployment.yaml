@@ -14,14 +14,14 @@ spec:
     spec:
       initContainers:
         - name: migrate
-          image: ghcr.io/schoolme/schoolme.org.uk:latest
+          image: ghcr.io/fourfridays/schoolme.org.uk:latest
           imagePullPolicy: Always
           command: ["python", "manage.py", "migrate"]
           envFrom:
           - secretRef:
               name: secret
       containers:
-        - image: ghcr.io/schoolme/schoolme.org.uk:latest
+        - image: ghcr.io/fourfridays/schoolme.org.uk:latest
           name: schoolme
           resources:
             requests:
