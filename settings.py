@@ -13,6 +13,7 @@ DEBUG = os.environ.get("DJANGO_DEBUG") == "True"
 
 INSTALLED_APPS = [
     "anymail",
+    "debug_toolbar",
     "fontawesomefree",
     "pages",
     "django_recaptcha",
@@ -49,9 +50,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "wagtail.contrib.legacy.sitemiddleware.SiteMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-]
 
 sentry_dsn = os.environ.get("SENTRY_DSN", "")
 if sentry_dsn:
@@ -241,9 +242,6 @@ def show_toolbar(request=None):
     return bool(strtobool(os.environ.get("DJANGO_DEBUG", "True")))
 
 if show_toolbar():
-    INSTALLED_APPS += ["debug_toolbar"]
-    MIDDLEWARE = ["debug_toolbar.middleware.DebugToolbarMiddleware"] + MIDDLEWARE
-
     DEBUG_TOOLBAR_CONFIG = {
         "SHOW_TOOLBAR_CALLBACK": show_toolbar,
         "SHOW_COLLAPSED": True,
