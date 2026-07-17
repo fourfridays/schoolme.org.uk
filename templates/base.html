@@ -23,11 +23,14 @@
         <link rel="preload" href="{% static 'fontawesomefree/css/all.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="{% static 'fontawesomefree/css/all.min.css' %}"></noscript>
         
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Rancho" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;450;500;600;700&display=swap" rel="stylesheet">
         {% if self.seo_title == 'Home' %}
             <link rel="stylesheet" type="text/css" href="{% static 'css/starfish.min.css' %}">
         {% endif %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/schoolme.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/deep-current.css' %}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
         
@@ -51,7 +54,7 @@
         
         {% wagtailuserbar %}
 
-        <header role="banner">
+        <header class="{% if self.hero_image %}site-header--overlay{% else %}site-header--solid{% endif %}" role="banner">
             {% block header %}
                 {# Header contains the main_navigation block #}
                 {% include "includes/header.html" with parent=site_root calling_page=self %}
@@ -70,6 +73,7 @@
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/schoolme.min.js' %}" async></script>
+        <script type="text/javascript" src="{% static 'js/deep-current.js' %}" defer></script>
 
         {% block extra_js %}{% endblock %}
     </body>
