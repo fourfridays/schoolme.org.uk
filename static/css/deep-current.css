@@ -440,9 +440,9 @@ main > article p + p {
 .concrete::before {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: max(1.25rem, calc((100vw - var(--dc-content)) / 2));
-    width: 2px;
+    width: 3.75rem;
+    height: 3px;
     background: var(--dc-green);
     content: "";
 }
