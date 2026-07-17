@@ -23,11 +23,15 @@
         <link rel="preload" href="{% static 'fontawesomefree/css/all.min.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="{% static 'fontawesomefree/css/all.min.css' %}"></noscript>
         
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Rancho" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;1,400&amp;family=Alegreya+Sans:wght@400;500;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&amp;display=swap" rel="stylesheet">
         {% if self.seo_title == 'Home' %}
             <link rel="stylesheet" type="text/css" href="{% static 'css/starfish.min.css' %}">
         {% endif %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/schoolme.min.css' %}">
+        {# Readable redesign override: intentionally loaded after the generated legacy bundles. #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mediterranean-dawn.css' %}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
         
@@ -49,6 +53,7 @@
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PL3TQ9H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
         
+        <a class="skip-link" href="#main-content">Skip to main content</a>
         {% wagtailuserbar %}
 
         <header role="banner">
@@ -58,7 +63,7 @@
             {% endblock header %}
         </header>
 
-        <main role="main">
+        <main id="main-content" role="main">
             {% block content %}
             {% endblock content %}
         </main>
@@ -70,6 +75,7 @@
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/schoolme.min.js' %}" async></script>
+        <script type="text/javascript" src="{% static 'js/mediterranean-ocean.js' %}" defer></script>
 
         {% block extra_js %}{% endblock %}
     </body>

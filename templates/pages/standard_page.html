@@ -7,7 +7,7 @@
         {% image page.hero_image fill-2400x1016-c100 as heroimage %}
         <div class="hero-image">
             <figure>
-                <img class="img-fluid" src="{{ heroimage.url }}" alt="{{ page.hero_image.title }}"/>
+                <img class="img-fluid" src="{{ heroimage.url }}" alt="{{ page.hero_image.title }}" width="2400" height="1016"/>
                 {% if page.hero_heading or page.hero_caption or page.hero_photo_credit %}
                     {% if page.hero_heading or page.hero_caption %}
                         <figcaption class="p-3">
