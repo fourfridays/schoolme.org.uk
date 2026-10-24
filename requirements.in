@@ -13,7 +13,7 @@ pillow-heif==1.8.1
 psycopg==3.3.6
 pydantic==2.13.5
 sentry-sdk==2.72.0
-wagtail==7.4.3
+wagtail==7.4.4
 whitenoise==6.12.0
 
 wagtail-django-recaptcha==2.2.0
